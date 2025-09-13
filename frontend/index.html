@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ATS Resume Scorer — Elegant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="bg-anim"></div>
+
+  <main class="wrap">
+    <header class="topbar">
+      <div class="brand">ATS <span>Scorer</span></div>
+      <div class="subtitle">Upload resume (.txt, .docx, .pdf) • Paste job description • Get elegant analysis</div>
+    </header>
+
+    <!-- ===== Transparent Horizontal Slider (how analysis helps) ===== -->
+    <section class="slider-wrap" aria-label="How analysis helps">
+      <div class="slider-viewport" id="sliderViewport">
+        <div class="slide-track" id="slideTrack" role="list">
+          <!-- Duplicate set A -->
+          <article class="slide" role="listitem">
+            <h4>Find keywords recruiters want</h4>
+            <p>We match your resume language to the job description so you show up in ATS searches — not just visually, but in machine parsing.</p>
+          </article>
+
+          <article class="slide" role="listitem">
+            <h4>Quantifiable achievements</h4>
+            <p>Resumes with metrics (percentages, dollar figures, headcounts) rank higher. We detect and highlight missing numbers you should add.</p>
+          </article>
+
+          <article class="slide" role="listitem">
+            <h4>Readability & formatting</h4>
+            <p>Simple sections and consistent formatting improve ATS parsing and recruiter reading speed — less risk of hidden content.</p>
+          </article>
+
+          <article class="slide" role="listitem">
+            <h4>Contact & header checks</h4>
+            <p>We ensure your contact details are machine-readable so recruiters can easily reach you and ATS can parse your header properly.</p>
+          </article>
+
+          <article class="slide" role="listitem">
+            <h4>Style & strong action verbs</h4>
+            <p>Avoid weak phrasing; use action verbs and outcomes. Our suggestions help transform responsibilities into achievements.</p>
+          </article>
+
+          <!-- Duplicate set B (for seamless loop) -->
+          <article class="slide" role="listitem">
+            <h4>Find keywords recruiters want</h4>
+            <p>We match your resume language to the job description so you show up in ATS searches — not just visually, but in machine parsing.</p>
+          </article>
+
+          <article class="slide" role="listitem">
+            <h4>Quantifiable achievements</h4>
+            <p>Resumes with metrics (percentages, dollar figures, headcounts) rank higher. We detect and highlight missing numbers you should add.</p>
+          </article>
+
+          <article class="slide" role="listitem">
+            <h4>Readability & formatting</h4>
+            <p>Simple sections and consistent formatting improve ATS parsing and recruiter reading speed — less risk of hidden content.</p>
+          </article>
+
+          <article class="slide" role="listitem">
+            <h4>Contact & header checks</h4>
+            <p>We ensure your contact details are machine-readable so recruiters can easily reach you and ATS can parse your header properly.</p>
+          </article>
+
+          <article class="slide" role="listitem">
+            <h4>Style & strong action verbs</h4>
+            <p>Avoid weak phrasing; use action verbs and outcomes. Our suggestions help transform responsibilities into achievements.</p>
+          </article>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <button id="pauseBtn" aria-pressed="false" title="Pause slider">Pause</button>
+      </div>
+    </section>
+    <!-- ===== end slider ===== -->
+
+    <section class="card grid">
+      <div class="left">
+        <div class="upload-area" id="uploadArea">
+          <input type="file" id="fileInput" accept=".txt,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.pdf"/>
+          <div class="upload-instructions">
+            <div class="icon">📄</div>
+            <div>Drag & Drop or <button id="browseBtn" class="link">Browse</button> to upload</div>
+            <div class="muted">Allowed: .txt, .docx, .pdf — Max 10MB</div>
+          </div>
+        </div>
+
+        <label for="jobDesc">Job Description</label>
+        <textarea id="jobDesc" placeholder="Paste job description here..."></textarea>
+
+        <div class="controls">
+          <button id="analyzeBtn" class="btn primary">Analyze Resume</button>
+          <button id="clearBtn" class="btn ghost">Clear</button>
+        </div>
+      </div>
+
+      <aside class="right">
+        <div class="result-card" id="resultCard">
+          <div class="score-circle" id="scoreCircle">—</div>
+          <h3 id="resultTitle">Awaiting upload</h3>
+          <div id="pointers" class="pointers">
+            <div class="muted">Upload a resume to see pointers here</div>
+          </div>
+          <div id="preview" class="preview muted"></div>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="foot muted">Built By Ayush Srivastava • Upload processed on server • Designed for clarity</footer>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // tiny snippet to wire pause control for slider (if slider JS not present)
+    (function(){
+      const pauseBtn = document.getElementById('pauseBtn');
+      const track = document.getElementById('slideTrack');
+      if(!pauseBtn || !track) return;
+      pauseBtn.addEventListener('click', ()=>{
+        const isPaused = track.classList.toggle('paused');
+        pauseBtn.textContent = isPaused ? 'Play' : 'Pause';
+        pauseBtn.setAttribute('aria-pressed', isPaused ? 'true' : 'false');
+      });
+    }());
+  </script>
+</body>
+</html>
